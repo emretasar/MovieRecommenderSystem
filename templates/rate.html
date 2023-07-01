@@ -1,0 +1,105 @@
+{% extends "layout.html" %}
+{% block title %}Recommender Page{% endblock %}
+{% block content %}
+
+    <h1>Recommender Page</h1>
+    <div class="container">
+        <form action="{{ url_for('get_recommendations_page')}}" method="post">
+            <div class="row">    
+                <div class="col-3">
+                    <div class="card">
+                        
+                        <img src="https://www.themoviedb.org/t/p/original/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg" class="card-img-top" alt="...">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title"> The Lord of the Rings: The Fellowship of the Ring (2001) </h5>
+                            <p class="card-text">Young hobbit Frodo Baggins, after inheriting a mysterious ring from his uncle Bilbo, must leave his home in order to keep it from falling into the hands of its evil creator. Along the way, a fellowship is formed to protect the ringbearer and make sure that the ring arrives at its final destination: Mt. Doom, the only place where it can be destroyed.</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rating1">Rating (1-10):</label>
+                            <input type="number" class="form-control" id="rating1" name="rating1" min="1" max="10">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="card">
+                        
+                        <img src="https://www.themoviedb.org/t/p/original/7lGBKoQCJbIZ2yhgJ2lwnen8aVS.jpg" class="card-img-top" alt="...">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title"> Pirates of the Caribbean: The Curse of the Black Pearl (2003) </h5>
+                            <p class="card-text"> Jack Sparrow, a freewheeling 18th-century pirate, quarrels with a rival pirate bent on pillaging Port Royal. When the governor's daughter is kidnapped, Sparrow decides to help the girl's love save her.</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rating1">Rating (1-10):</label>
+                            <input type="number" class="form-control" id="rating2" name="rating2" min="1" max="10">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="card">
+                        
+                        <img src="https://www.themoviedb.org/t/p/original/hMTncCsOwZZCNOo5SBhE1wQKpid.jpg" class="card-img-top" alt="...">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title"> The Godfather (1972) </h5>
+                            <p class="card-text">Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.</p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rating1">Rating (1-10):</label>
+                            <input type="number" class="form-control" id="rating3" name="rating3" min="1" max="10">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="card">
+                        
+                        <img src="https://www.themoviedb.org/t/p/original/TxbvYS8wsgYSpYZtQLZXnoVOIQ.jpg" class="card-img-top" alt="...">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title"> John Wick (2014) </h5>
+                            <p class="card-text"> Ex-hitman John Wick comes out of retirement to track down the gangsters that took everything from him. </p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rating1">Rating (1-10):</label>
+                            <input type="number" class="form-control" id="rating4" name="rating4" min="1" max="10">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="card">
+                        
+                        <img src="https://www.themoviedb.org/t/p/original/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg" class="card-img-top" alt="...">
+                        
+                        <div class="card-body">
+                            <h5 class="card-title"> Inception (2010) </h5>
+                            <p class="card-text"> Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life as payment for a task considered to be impossible: "inception", the implantation of another person's idea into a target's subconscious. </p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rating1">Rating (1-10):</label>
+                            <input type="number" class="form-control" id="rating5" name="rating5" min="1" max="10">
+                        </div>
+
+                    </div>
+                </div>
+            
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+
+    </div>
+{% endblock %}
+
