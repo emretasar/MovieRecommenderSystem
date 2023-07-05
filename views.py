@@ -42,5 +42,9 @@ def get_recommendations_page():
         return render_template("get_recommendations.html", ids=ratedMovieIdList, ratings=ratedMovieRatingList)
 
 
+def results_page():
+    return render_template("results.html")
+
+
 def about_page():
     return render_template("about.html")
