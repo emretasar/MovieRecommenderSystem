@@ -10,8 +10,14 @@ def home_page():
     day_name = today.strftime("%A")
     return render_template("home.html", day=day_name)
 
+
+def algorithms_page():
+    return render_template("algorithms.html")
+
+
 def rate_page():
     return render_template("rate.html", ratings=movieIdList)
+
 
 def get_recommendations_page():
     
@@ -35,3 +41,6 @@ def get_recommendations_page():
 
         return render_template("get_recommendations.html", ids=ratedMovieIdList, ratings=ratedMovieRatingList)
 
+
+def about_page():
+    return render_template("about.html")
