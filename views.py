@@ -3,7 +3,6 @@ from datetime import datetime
 from utilities import appendNewUser
 import server
 
-movieIdList = [4993, 6539, 858, 115149, 79132]
 
 def home_page():
     today = datetime.today()
@@ -19,18 +18,26 @@ def rate_page():
     cur.execute("SELECT * FROM movie")
     movies = cur.fetchall()
     cur.close()
-    return render_template("rate.html", ratings=movieIdList, movies=movies)
+    return render_template("rate.html", movies=movies)
 
 
 def get_recommendations_page():
     
+    cur = server.mysql.connection.cursor()
+    cur.execute("SELECT movie_id FROM movie")
+    movie_ids = cur.fetchall()
+
+    movieIdList = []
+    for movie_id in movie_ids:
+        movieIdList.append(movie_id[0])
+
     ratedMovieIdList = movieIdList.copy()
     ratedMovieRatingList = []
 
     if request.method == "POST":
 
         for idx, movieId in enumerate(movieIdList):
-            param = "rating" + str(idx+1)
+            param = str(idx+1)
             rate = request.form.get(param)
 
             if rate == '':
