@@ -1,7 +1,7 @@
 from flask import render_template, request
 from datetime import datetime
 from utilities import appendNewUser
-
+import server
 
 movieIdList = [4993, 6539, 858, 115149, 79132]
 
@@ -14,9 +14,12 @@ def home_page():
 def algorithms_page():
     return render_template("algorithms.html")
 
-
 def rate_page():
-    return render_template("rate.html", ratings=movieIdList)
+    cur = server.mysql.connection.cursor()
+    cur.execute("SELECT * FROM movie")
+    movies = cur.fetchall()
+    cur.close()
+    return render_template("rate.html", ratings=movieIdList, movies=movies)
 
 
 def get_recommendations_page():
