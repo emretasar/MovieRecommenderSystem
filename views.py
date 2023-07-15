@@ -1,7 +1,8 @@
 from flask import render_template, request
 from datetime import datetime
-from utilities import appendNewUser
+from utilities import appendNewUser, LoadMovieLensData
 import server
+from ContentBasedAlgo import ContentBasedAlgorithm
 
 
 def home_page():
@@ -49,7 +50,12 @@ def get_recommendations_page():
 
         newUserId = appendNewUser(ratedMovieIdList, ratedMovieRatingList)
 
-        return render_template("get_recommendations.html", ids=ratedMovieIdList, ratings=ratedMovieRatingList)
+        (ml, evaluationData, rankings) = LoadMovieLensData()
+
+        contentBasedAlgo = ContentBasedAlgorithm(movie_lens=ml, dataset=evaluationData, rankings=rankings, test_subject=newUserId, k=5)
+        content_based_recommendations = contentBasedAlgo.predict()
+        
+        return render_template("get_recommendations.html", ids=ratedMovieIdList, ratings=ratedMovieRatingList, recs=content_based_recommendations)
 
 
 def results_page():

@@ -1,5 +1,13 @@
 import pandas as pd
 import datetime
+from MovieLens import MovieLens
+
+
+def LoadMovieLensData():
+    ml = MovieLens()
+    data = ml.loadMovieLensLatestSmall()
+    rankings = ml.getPopularityRanks()
+    return (ml, data, rankings)
 
 
 def appendNewUser(ratedMovieIdList, ratedMovieRatingList):

@@ -2,10 +2,10 @@
 {% block title %}Home Page{% endblock %}
 {% block content %}
 
-    <h1>Ratings</h1>
+    <h1>Content Based Recommendations</h1>
     <ol>
-        {% for rate in ratings %}
-            <li> {{ids[loop.index0]}} : {{ rate }} </li>
+        {% for movie, rate in recs %}
+            <li> {{ids[loop.index0]}} : {{ movie,rate }} </li>
         {% endfor %}
     </ol> 
 
