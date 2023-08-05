@@ -1,13 +1,17 @@
 {% extends "layout.html" %}
 {% block title %}Home Page{% endblock %}
 {% block content %}
+
     <h1>Movie Recommender Engine</h1>
-    <p>Have a nice {{ day }}!</p>
-
-    <!-- <div class="btn-group d-flex" role="group">
-        <a href="{{ url_for('home_page') }}" class="btn btn-info btn-lg ms-1 rounded border-primary">Home Page</a>
-        <a href="{{ url_for('rate_page') }}" class="btn btn-info btn-lg ms-1 rounded border-primary">Rate Page</a>
-    </div>  -->
-
+    <div class="intro">
+        <p>Recommender systems are intelligent information filtering systems that predict and recommend items that users are likely to be interested in. They help users navigate through vast amounts of available choices by leveraging historical user preferences and item characteristics.</p>
+        <p>In this project, we explore the domain of movie recommendation systems, utilizing the widely-used Movielens dataset. Our goal is to develop a recommender system that combines content-based and collaborative filtering methods with deep learning approaches to offer movie enthusiasts personalized suggestions based on their taste.</p>
+        <p>The Movielens dataset is a widely recognized benchmark extensively used in the field of recommender systems. It provides a rich collection of movie ratings, user profiles, and item metadata, including explicit user ratings and movie attributes such as genres, release year, and tags.</p>
+        <p>Content-based filtering is a recommendation technique that leverages the characteristics of items to make recommendations. In the context of movie recommendation, content-based filtering analyzes movie attributes, such as genre, director, cast, and plot summary, to understand the content of the movies. By modeling user preferences based on their historical ratings, the system suggests movies with similar attributes to those previously enjoyed by the user. Content-based filtering is particularly effective when dealing with the cold-start problem, where little or no user data is available.</p>
+        <p>Collaborative filtering is another popular approach in recommender systems that leverages the collective intelligence of a user community to make recommendations. It assumes that users with similar tastes in the past will have similar preferences in the future. Collaborative filtering can be divided into two main types: user-based and item-based. User-based collaborative filtering finds users with similar preferences and recommends items that those similar users have liked. Item-based collaborative filtering, on the other hand, identifies similar items based on user ratings and suggests items that are similar to those already enjoyed by the user.</p>
+        <p>We aim to combine content-based and collaborative filtering methods, along with deep learning-based solutions, to enhance recommendation accuracy. By leveraging both item attributes and user preferences, our goal is to provide more accurate and diverse movie recommendations. The content-based approach allows us to capture finer nuances of movies based on their attributes, while collaborative filtering enables us to incorporate the wisdom of the user community. By effectively combining these methods, we can generate personalized recommendations that align with each user's unique taste. Additionally, integrating deep learning-based solutions into our recommender system can further improve the accuracy of our recommendation system.</p>
+        <p>Through our research, we strive to contribute to the field of recommendation systems and offer valuable insights into improving personalized movie recommendations.</p>
+        <p>Have a nice {{ day }}!</p>
+    </div>
 {% endblock %}
 
