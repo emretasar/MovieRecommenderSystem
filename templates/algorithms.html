@@ -3,8 +3,14 @@
 {% block content %}
 
     <h1>Implemented Algorithms</h1>
-    <p>This page will be used for presenting implemented algorithms.</p>
-
+    <div class="implemented-algorithms">
+        <h3>Content Based Recommedations</h3>
+        <p>Content-based recommendation systems are intelligent information filtering algorithms designed to provide personalized, tailored recommendations by analyzing the inherent features and characteristic of items. The basic principle of a content-based recommendation system is to capture the unique characteristics of items, such as movies, books, or products, and associate them with user preferences. The system first creates a profile or representation of each item based on its content attributes, which can include genre, director, actors, keywords, and more. To generate recommendations, a content-based approach uses a two-step process. First, the system creates  user profiles based on their historical interactions or interests. User profiles include information about items the user has previously rated, liked, or interacted with. In the second step, the system compares the properties of  the user profile items with the properties of other category items. The system identifies items with similar content attributes as in the user profile and presents them to the user. Similarity is often measured using different distance or similarity measurements, such as cosine similarity or Euclidean distance.</p>
+        <h3>Item Based Collaborative Filtering Recommedations</h3>
+        <p>Item-Based Collaborative Filtering Recommender Systems are powerful algorithms designed to provide personalized recommendations by leveraging the collective preferences of user communities. Unlike content-based recommenders, which rely solely on item attributes, item-based collaborative filtering focuses on the historical interactions between users and items. In item-to-item collaborative filtering, the system matches each of the user's purchased and rated items to similar items and then combines those similar items into a recommendation list. </p>
+        <h3>User Based Collaborative Filtering Recommedations</h3>
+        <p>User-Based Collaborative Filtering Recommender Systems are specific algorithms designed to provide personalized recommendations by leveraging the collective preferences of users with similar tastes.  The core principle of User-Based Collaborative Filtering lies in the assumption that users who have shown similar preferences in the past will have similar preferences in the future. The system first builds a similarity matrix based on user-user interactions, where each entry represents the similarity between pairs of users. This similarity can be computed using various metrics, such as cosine similarity or Pearson correlation.</p>
+    </div>
 
 
 {% endblock %}

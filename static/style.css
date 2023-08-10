@@ -1,35 +1,29 @@
 body {
-    background-color: #9BE8D8;
-    background-color: #C1ECE4;
-    background-color: #A7ECEE;
     background-color: #d8fffc;            
 
 }
 
 h1 {
     text-align: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.recommendations {
+    margin-left: 5%;
 }
 
 footer {
     text-align: center;
 }
 
-.about-emre, .about-harun{
-    text-align: center;
-    margin-left: 10%;
-    margin-right: 10%;
+.about-emre, .about-harun, .implemented-algorithms, .intro{
+    margin-left: 15%;
+    margin-right: 15%;
     margin-bottom: 25px;
 }
 
-.intro{
-    text-align: center;
-    margin-left: 10%;
-    margin-right: 10%;
-}
-
 .card {
-    background-color: #B0DAFF;
-    background-color: #F6F1F1;
     background-color: #ECF9FF;  
     margin-bottom: 5px;      
 }

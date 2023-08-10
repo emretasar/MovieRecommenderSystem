@@ -26,8 +26,6 @@ class ContentBasedAlgorithm(AlgoBase):
             (self.trainset.n_items, len(target_user_ratings)))
 
         for row_id in range(trainset.n_items):
-            if (row_id % 100 == 0):
-                print(row_id, " of ", self.trainset.n_items)
             for column_id, (user_rated_movie_id, user_rating) in enumerate(target_user_ratings):
                 row_movie_id = int(self.trainset.to_raw_iid(row_id))
                 column_movie_id = user_rated_movie_id
@@ -72,8 +70,9 @@ class ContentBasedAlgorithm(AlgoBase):
                 similarity_total += self.similarities[row_index][idx]
                 weighted_rate_total += target_user_ratings[idx][1] * self.similarities[row_index][idx]
 
-            predicted_rate = weighted_rate_total / similarity_total
-            predictions.append((self.ml.getMovieName(int(movie_id)), predicted_rate))
+            if similarity_total > 0:
+                predicted_rate = weighted_rate_total / similarity_total
+                predictions.append((self.ml.getMovieName(int(movie_id)), predicted_rate))
 
         predictions.sort(key=lambda x: x[1], reverse=True)
 

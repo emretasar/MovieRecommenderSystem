@@ -5,8 +5,10 @@ import server
 from ContentBasedAlgo import ContentBasedAlgorithm
 from ItemBasedCollaborativeFilteringAlgo import ItemBasedCollaborativeFilteringAlgorithm
 from UserBasedCollaborativeFilteringAlgo import UserBasedCollaborativeFilteringAlgorithm
+from Recommendations import Recommendations
 from collections import defaultdict
 from operator import itemgetter
+
 
 
 def home_page():
@@ -61,18 +63,23 @@ def get_recommendations_page():
 
 
         recommended_movies = defaultdict()
+        recommendations_dict = {}
 
-        ContentBasedAlgo = ContentBasedAlgorithm(movie_lens=ml, dataset=evaluationData, rankings=rankings, test_subject=newUserId, k=3)
+        ContentBasedAlgo = ContentBasedAlgorithm(movie_lens=ml, dataset=evaluationData, rankings=rankings, test_subject=newUserId, k=10)
         content_based_recommendations = ContentBasedAlgo.predict()
         content_based_recommendations = rating_mapper(0, 5, content_based_recommendations)
+
+        recommendations_dict["content_based_recs"] = content_based_recommendations[:25]
         
         recommended_movies = movieAddUpdate(recommended_movies, content_based_recommendations)
             
-        ItemBasedCollaborativeFilteringAlgo = ItemBasedCollaborativeFilteringAlgorithm(movie_lens=ml, test_subject=str(newUserId), k=3, sim_options=sim_options)
+        ItemBasedCollaborativeFilteringAlgo = ItemBasedCollaborativeFilteringAlgorithm(movie_lens=ml, test_subject=str(newUserId), k=7, sim_options=sim_options)
         ItemBasedCollaborativeFilteringAlgo.fit()
         item_based_recommendations = ItemBasedCollaborativeFilteringAlgo.predict()
         item_based_recommendations = rating_mapper(0, 5, item_based_recommendations)
         
+        recommendations_dict["item_based_collaborative_recs"] = item_based_recommendations[:25]
+
         recommended_movies = movieAddUpdate(recommended_movies, item_based_recommendations)
 
 
@@ -80,14 +87,22 @@ def get_recommendations_page():
         UserBasedCollaborativeFilteringAlgo.fit()
         user_based_recommendations = UserBasedCollaborativeFilteringAlgo.predict()
         user_based_recommendations = rating_mapper(0, 5, user_based_recommendations)
+        
+        recommendations_dict["user_based_collaborative_recs"] = user_based_recommendations[:25]
 
         recommended_movies = movieAddUpdate(recommended_movies, user_based_recommendations)
 
         recommended_movies = sorted(recommended_movies.items(), key=itemgetter(1), reverse=True)
         recommended_movies = [(movie[0], movie[1]/3) for movie in recommended_movies]
-    
+        recommended_movies = rating_mapper(0, 5, recommended_movies)
+
+        recommendations_dict["sum_recommendations"] = recommended_movies[:25]
+
+        recommendations = Recommendations(recommendations_dict)
+        recommendations.clearNoise()
+        recommendations_dict = recommendations.getRecommendations()
         
-        return render_template("get_recommendations.html", sum_recs=recommended_movies)
+        return render_template("get_recommendations.html", all_recommendations=recommendations_dict)
 
 
 def results_page():

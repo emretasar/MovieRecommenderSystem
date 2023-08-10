@@ -22,14 +22,32 @@
             <li> {{ movie, rate }} </li>
         {% endfor %}
     </ol>  -->
-
-    <h1> Recommendations </h1>
-    <ol>
-        {% for (movie, rate) in sum_recs %}
-            <li> {{ movie, rate }} </li>
-        {% endfor %}
-    </ol> 
-
+    <div class="recommendations">
+        <h1> Content Based Recommendations </h1>
+        <ol>
+            {% for movie, rate in all_recommendations["content_based_recs"] %}
+                <li> {{ movie}}, {{"%.2f"|format(rate)}} </li>
+            {% endfor %}
+        </ol> 
+        <h1> Item Based Collaborative Recommendations </h1>
+        <ol>
+            {% for movie, rate in all_recommendations["item_based_collaborative_recs"] %}
+                <li> {{ movie}}, {{"%.2f"|format(rate)}} </li>
+            {% endfor %}
+        </ol> 
+        <h1> User Based Collaborative Recommendations </h1>
+        <ol>
+            {% for movie, rate in all_recommendations["user_based_collaborative_recs"] %}
+                <li> {{ movie}}, {{"%.2f"|format(rate)}} </li>
+            {% endfor %}
+        </ol> 
+        <h1> Combined Recommendations </h1>
+        <ol>
+            {% for movie, rate in all_recommendations["sum_recommendations"] %}
+                <li> {{ movie}}, {{"%.2f"|format(rate)}} </li>
+            {% endfor %}
+        </ol> 
+    </div>
 
 
 {% endblock %}

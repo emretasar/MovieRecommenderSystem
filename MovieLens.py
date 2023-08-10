@@ -111,24 +111,6 @@ class MovieLens:
                     years[movieID] = int(year)
         return years
     
-    def getMiseEnScene(self):
-        mes = defaultdict(list)
-        with open("LLVisualFeatures13K_Log.csv", newline='') as csvfile:
-            mesReader = csv.reader(csvfile)
-            next(mesReader)
-            for row in mesReader:
-                movieID = int(row[0])
-                avgShotLength = float(row[1])
-                meanColorVariance = float(row[2])
-                stddevColorVariance = float(row[3])
-                meanMotion = float(row[4])
-                stddevMotion = float(row[5])
-                meanLightingKey = float(row[6])
-                numShots = float(row[7])
-                mes[movieID] = [avgShotLength, meanColorVariance, stddevColorVariance,
-                   meanMotion, stddevMotion, meanLightingKey, numShots]
-        return mes
-    
     def getMovieName(self, movieID):
         if movieID in self.movieID_to_name:
             return self.movieID_to_name[movieID]

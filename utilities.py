@@ -2,6 +2,7 @@ import pandas as pd
 import datetime
 from MovieLens import MovieLens
 from scipy.interpolate import interp1d
+import numpy as np
 
 
 def LoadMovieLensData():
@@ -51,10 +52,11 @@ def rating_mapper(min_val, max_val, movies):
 
     min_rating = movies[-1][1]
     max_rating = movies[0][1]
-    mapper = interp1d([min_rating, max_rating],[min_val,max_val], fill_value="extrapolate")
+    mapper = interp1d([min_rating, max_rating], [min_val, max_val], fill_value="extrapolate")
+
     for movie in movies:
         movie_name = movie[0]
-        mapped_movie_rating = mapper(movie[1])
+        mapped_movie_rating = np.clip(mapper(movie[1]), min_val, max_val)  # Clip values within the desired range
         mapped_movies.append((movie_name, mapped_movie_rating))
     
     return mapped_movies
